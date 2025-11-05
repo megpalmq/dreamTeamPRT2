@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DreamTeam | Dashboard</title>
+    <link rel="stylesheet" href="/src/css/styles.css" />
+  </head>
+  <body class="dashboard-body">
+    <header class="navbar">
+      <a style="text-decoration: none" href="/src/dashboard.html">
+        <div class="logo">DREAMTEAM</div>
+      </a>
+      <nav>
+        <a href="/src/dashboard.html">Challenge</a>
+        <span>|</span>
+        <a href="/src/leadboard.html">Leaderboard</a>
+        <span>|</span>
+        <a href="/src/chat.html">Chat</a>
+        <span>|</span>
+        <a href="/src/rewards.html">Rewards</a>
+        <span>|</span>
+        <a href="/src/players.html">Players</a>
+      </nav>
+    </header>
+
+    <main class="dashboard-main">
+      <section class="welcome-section">
+        <h1>Welcome, <span id="username">Pacers Fan!</span></h1>
+        <div class="daily">
+          <p>
+            Daily Challenge :
+            <strong id="challenge-date">October 24, 2025</strong>
+          </p>
+        </div>
+      </section>
+      <section class="puzzle-section">
+        <h2>STAT-MATCH PUZZLE</h2>
+        <p class="subtitle">
+          Drag and drop players to meet statistical thresholds.
+        </p>
+
+        <div class="puzzle-objective">
+          <h3>Puzzle Objective Today:</h3>
+          <p>
+            Achieve a total team score of
+            <span class="highlight">150 points</span> and
+            <span class="highlight">50 assists</span> using any 5 players.
+          </p>
+        </div>
+
+        <div class="puzzle-layout">
+          <div class="drop-zone" id="drop-zone">
+            <p>
+              <strong>BUILD YOUR DREAMTEAM</strong><br />Drag & Drop players
+              into this area
+            </p>
+          </div>
+
+          <div class="players-list">
+            <h3>Players</h3>
+            <div class="players">
+              <div class="player" draggable="true">TYRESE HALIBURTON</div>
+              <div class="player" draggable="true">ANDREW NEMBHARD</div>
+              <div class="player" draggable="true">REGGIE MILLER</div>
+              <div class="player" draggable="true">LANCE STEVENSON</div>
+              <div class="player" draggable="true">TJ MCCONNELL</div>
+              <div class="player" draggable="true">PAUL GEORGE</div>
+              <div class="player" draggable="true">VICTOR OLADIPO</div>
+            </div>
+
+            <button id="refresh-btn" class="btn refresh">🔁 Refresh</button>
+          </div>
+        </div>
+
+        <!-- Feedback bars -->
+        <div class="feedback">
+          <div class="feedback-item">
+            <h4>Points</h4>
+            <div class="progress">
+              <div id="points-bar" style="width: 0%"></div>
+            </div>
+            <p><span id="points-val">0</span> / 150</p>
+          </div>
+          <div class="feedback-item">
+            <h4>Assists</h4>
+            <div class="progress">
+              <div id="assists-bar" style="width: 0%"></div>
+            </div>
+            <p><span id="assists-val">0</span> / 50</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lineup-section">
+        <div class="card player-select">
+          <h2>Select Your Players</h2>
+          <img src="/public/tyrese.png" alt="Tyrese Haliburton" />
+        </div>
+
+        <div class="card stats-chart">
+          <h2>Lineup Stats Comparison</h2>
+          <canvas id="statsChart"></canvas>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>DREAMTEAM © 2025 | Pacers Fan App</p>
+    </footer>
+
+    <script type="module" src="/src/main.js" defer></script>
+    <script type="module" src="/src/js/dashboard.js" defer></script>
+  </body>
+</html>

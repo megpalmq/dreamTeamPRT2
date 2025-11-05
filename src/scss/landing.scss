@@ -1,0 +1,124 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// Background and layout
+body.landing-body {
+  @include flex-center;
+  flex-direction: column;
+  height: 100vh;
+  margin: 0;
+  font-family: $font-primary;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/dist/assets/images/background.jpeg") no-repeat center/cover;
+  color: $text-light;
+  overflow: hidden;
+  position: relative;
+
+  // Subtle overlay pattern
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    opacity: 0.1;
+    z-index: 0;
+  }
+}
+
+// Container for everything
+.landing-container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .reggieSiakam {
+    max-width: 90%;
+    background-image: url(/dist/assets/images/siakamReggie.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 400px;
+    width: 100%;
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .landing-content {
+    background: rgba(10, 15, 45);
+    padding: 2rem 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+    width: 830px;
+    height: 372px;
+    margin-top: -10px;
+    z-index: 1;
+    text-align: center;
+
+    h2 {
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: $secondary-color;
+      margin-bottom: 0.5rem;
+    }
+
+    h1 {
+      font-size: 5rem;
+      color: $text-light;
+      margin-bottom: 1.8rem;
+    }
+
+    .landing-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+
+      .btn {
+        display: inline-block;
+        padding: 0.9rem 1.5rem;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 700;
+        letter-spacing: 1px;
+        transition: 0.3s ease;
+        font-size: 30px;
+        text-transform: uppercase;
+
+        &.primary {
+          @include gradient-bg($primary-color, darken($primary-color, 15%));
+          color: white;
+          border: none;
+          box-shadow: 0 0 15px rgba($primary-color, 0.6);
+
+          &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba($primary-color, 0.9);
+          }
+        }
+
+        &.secondary {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.4);
+          color: $text-light;
+
+          &:hover {
+            background: rgba(255, 255, 255, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+// Floating animation for image
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}

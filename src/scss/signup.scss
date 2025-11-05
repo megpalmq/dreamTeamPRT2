@@ -1,0 +1,96 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+body.signup-body {
+  @include flex-center;
+  height: 100vh;
+  margin: 0;
+  font-family: $font-primary;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    url("/dist/assets/images/background.jpeg") no-repeat center/cover;
+  color: $text-light;
+  overflow: hidden;
+  position: relative;
+}
+
+// Signup container
+.signup-container {
+  background: rgba(10, 15, 45, 0.95);
+  padding: 3rem 3.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0 0 40px rgba($primary-color, 0.4);
+  width: 420px;
+  text-align: center;
+  position: relative;
+
+  h1 {
+    font-size: 2.8rem;
+    color: $text-light;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: rgba($text-light, 0.9);
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+    }
+
+    input {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 1.2rem;
+      background: rgba(255, 255, 255, 0.9);
+      font-family: $font-secondary;
+      font-size: 1rem;
+      outline: none;
+
+      &:focus {
+        box-shadow: 0 0 0 2px rgba($primary-color, 0.7);
+      }
+    }
+
+    .btn.primary {
+      @include gradient-bg($primary-color, darken($primary-color, 15%));
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      letter-spacing: 1px;
+      padding: 0.9rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-transform: uppercase;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba($primary-color, 0.9);
+      }
+    }
+  }
+
+  // Back button
+  .back-btn {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: white;
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+      color: lighten($primary-color, 20%);
+    }
+  }
+}

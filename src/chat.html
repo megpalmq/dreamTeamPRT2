@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DreamTeam | Chat</title>
+    <link rel="stylesheet" href="/src/css/styles.css" />
+  </head>
+  <body class="chat-body">
+    <header class="navbar">
+      <a style="text-decoration: none" href="/src/dashboard.html">
+        <div class="logo">DREAMTEAM</div>
+      </a>
+      <nav>
+        <a href="/src/dashboard.html">Challenge</a>
+        <span>|</span>
+        <a href="/src/leadboard.html">Leaderboard</a>
+        <span>|</span>
+        <a href="/src/chat.html">Chat</a>
+        <span>|</span>
+        <a href="/src/rewards.html">Rewards</a>
+        <span>|</span>
+        <a href="/src/players.html">Players</a>
+      </nav>
+    </header>
+
+    <main class="chat-main">
+      <section class="chat-header">
+        <h1>CHAT:</h1>
+        <div class="daily">
+          <p>
+            DAILY CHALLENGE :
+            <strong id="challenge-date">October 24, 2025</strong>
+          </p>
+        </div>
+      </section>
+
+      <section class="chat-box">
+        <h2>💬 Fan Chat</h2>
+
+        <div id="messages" class="messages">
+          <!-- Messages dynamically injected here -->
+        </div>
+
+        <form id="message-form" class="message-form">
+          <input
+            type="text"
+            id="message-input"
+            placeholder="Type a message..."
+            autocomplete="off"
+          />
+          <button type="submit">➤</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>DREAMTEAM © 2025 | Pacers Fan App</p>
+    </footer>
+
+    <script type="module" src="/src/main.js" defer></script>
+    <script type="module" src="/src/js/chat.js" defer></script>
+  </body>
+</html>
