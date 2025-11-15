@@ -25,6 +25,96 @@
           Loading...
         </p>
       </div>
+      <div class="account-name">
+        <h2
+          id="full-name-display"
+          style="margin: 0.25rem 0 0; color: #fff; font-size: 1.2rem"
+        ></h2>
+      </div>
+      <div class="password-info">
+        <p id="password-info" style="margin-top: 0.25rem; color: #dbe9ff">
+          Password: ••••••••
+        </p>
+      </div>
+
+      <!-- Profile edit section -->
+      <div class="profile-section">
+        <div class="avatar">
+          <img
+            id="profile-img"
+            src="./images/default-avatar.png"
+            alt="Profile"
+          />
+          <label class="photo-label">
+            Change photo
+            <input id="profile-photo-input" type="file" accept="image/*" />
+          </label>
+        </div>
+
+        <div class="profile-edit">
+          <div class="field">
+            <label for="display-name-input">Display name</label>
+            <input id="display-name-input" type="text" />
+          </div>
+
+          <div class="field">
+            <label for="email-input">Email</label>
+            <input id="email-input" type="email" />
+          </div>
+
+          <div class="field">
+            <label for="username-input">Username</label>
+            <input id="username-input" type="text" />
+          </div>
+
+          <div class="field">
+            <label for="reauth-password"
+              >Current password (required to change email)</label
+            >
+            <input
+              id="reauth-password"
+              type="password"
+              placeholder="Enter current password to confirm email changes"
+            />
+          </div>
+
+          <div class="actions">
+            <button id="save-profile-btn" class="btn btn-primary">
+              Save profile
+            </button>
+          </div>
+
+          <hr />
+
+          <h3>Change password</h3>
+          <div class="field">
+            <input
+              id="current-password"
+              type="password"
+              placeholder="Current password"
+            />
+          </div>
+          <div class="field">
+            <input
+              id="new-password"
+              type="password"
+              placeholder="New password"
+            />
+          </div>
+          <div class="field">
+            <input
+              id="confirm-new-password"
+              type="password"
+              placeholder="Confirm new password"
+            />
+          </div>
+          <div class="actions">
+            <button id="change-password-btn" class="btn btn-secondary">
+              Change password
+            </button>
+          </div>
+        </div>
+      </div>
 
       <!-- Stats Grid -->
       <div class="stats-grid">
@@ -76,6 +166,9 @@
         </button>
       </div>
     </div>
+
+    <!-- Toast notifications -->
+    <div id="toast-root" aria-live="polite" aria-atomic="true"></div>
 
     <script type="module" src="./js/account.js"></script>
   </body>

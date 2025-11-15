@@ -1,0 +1,16 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Avatars: only allow authenticated users to upload to their own folder
+    match /avatars/{userId}/{allPaths=**} {
+      allow read: if true; // avatars are public for display in chat/profile
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // deny other writes by default
+    match /{allPaths=**} {
+      allow read: if false;
+      allow write: if false;
+    }
+  }
+}

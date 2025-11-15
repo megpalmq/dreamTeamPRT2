@@ -1,8 +1,7 @@
-import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, onSnapshot, query, orderBy, serverTimestamp, getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
-import { app } from "/firebase";
+import { app, db } from "../../firebase.js";
 
-const db = getFirestore(app);
 const auth = getAuth(app);
 
 // Elements
@@ -17,21 +16,37 @@ if (messagesDiv) {
   onSnapshot(chatQuery, (snapshot) => {
     messagesDiv.innerHTML = "";
 
-    snapshot.forEach((doc) => {
-      const msg = doc.data();
+    snapshot.forEach(async (docSnap) => {
+      const msg = docSnap.data();
       const time = msg.timestamp
         ? new Date(msg.timestamp.toDate()).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
         : "Just now";
 
       const div = document.createElement("div");
       div.classList.add("message");
+
+      // avatar: prefer photoURL in message, else initials
+      let avatarHtml = "";
+      if (msg.photoURL) {
+        avatarHtml = `<div class="avatar"><img src="${msg.photoURL}" alt="avatar"/></div>`;
+      } else {
+        const initials = msg.displayName
+          ? msg.displayName.split(" ").map(n=>n[0]).join("").slice(0,2).toUpperCase()
+          : (msg.userInitials || "??");
+        avatarHtml = `<div class="avatar">${initials}</div>`;
+      }
+
+      // name line: displayName and optional @username
+      const nameLine = `${msg.displayName || msg.user || "Unknown"}${msg.username ? ` <span class=\"username\">@${msg.username}</span>` : ""}`;
+
       div.innerHTML = `
-        <div class="avatar">${msg.userInitials || "??"}</div>
+        ${avatarHtml}
         <div class="msg-content">
-          <h4>${msg.user || "Unknown"} <span class="time">${time}</span></h4>
+          <h4>${nameLine} <span class="time">${time}</span></h4>
           <p>${msg.text}</p>
         </div>
       `;
+
       messagesDiv.appendChild(div);
       messagesDiv.scrollTop = messagesDiv.scrollHeight;
     });
@@ -45,20 +60,32 @@ if (msgForm) {
     const text = msgInput.value.trim();
     if (!text) return;
 
-    const user = auth.currentUser?.displayName || "Guest";
-    const initials = user
-      .split(" ")
-      .map((n) => n[0])
-      .join("")
-      .slice(0, 2)
-      .toUpperCase();
-
-    await addDoc(collection(db, "messages"), {
-      user,
-      userInitials: initials,
+    const currentUser = auth.currentUser;
+    let payload = {
       text,
       timestamp: serverTimestamp(),
-    });
+    };
+
+    if (currentUser) {
+      payload.uid = currentUser.uid;
+      payload.displayName = currentUser.displayName || null;
+      payload.photoURL = currentUser.photoURL || null;
+
+      // try to load username from Firestore users/{uid}
+      try {
+        const uDoc = await getDoc(doc(db, "users", currentUser.uid));
+        if (uDoc.exists()) {
+          const data = uDoc.data();
+          if (data.username) payload.username = data.username;
+        }
+      } catch (err) {
+        console.warn("Could not load username for message:", err);
+      }
+    } else {
+      payload.displayName = "Guest";
+    }
+
+    await addDoc(collection(db, "messages"), payload);
 
     msgInput.value = "";
   });
