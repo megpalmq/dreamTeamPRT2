@@ -17,7 +17,7 @@ $spacing-lg: 2rem;
 
 @font-face {
   font-family: "DreamTeam";
-  src: url("/dist/assets/fonts/Basketball.otf");
+  src: url("/src/fonts/Basketball.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;

@@ -59,7 +59,7 @@ body.signup-body {
     }
 
     .btn.primary {
-      @include gradient-bg($primary-color, darken($primary-color, 15%));
+      //@include gradient-bg($primary-color, darken($primary-color, 15%));
       border: none;
       border-radius: 8px;
       color: white;
@@ -90,7 +90,7 @@ body.signup-body {
 
     &:hover {
       transform: scale(1.2);
-      color: lighten($primary-color, 20%);
+      //color: lighten($primary-color, 20%);
     }
   }
 }

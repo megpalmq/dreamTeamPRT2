@@ -21,7 +21,7 @@ p {
 
 @font-face {
   font-family: "DreamTeam";
-  src: url("/dist/assets/fonts/Basketball.otf");
+  src: url("/src/fonts/Basketball.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -105,7 +105,6 @@ body.landing-body::before {
   text-transform: uppercase;
 }
 .landing-container .landing-content .landing-buttons .btn.primary {
-  background: linear-gradient(135deg, #1e3fff, rgb(0, 30.58, 208.5));
   color: white;
   border: none;
   box-shadow: 0 0 15px rgba(30, 63, 255, 0.6);
@@ -131,14 +130,15 @@ body.landing-body::before {
     transform: translateY(-10px);
   }
 }
-body.login-body {
+.login-body {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/dist/assets/images/background.jpeg") no-repeat center/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/src/images/background.jpeg") no-repeat center/cover;
   color: #ffffff;
+  background-color: #232232;
   font-family: "DreamTeam", "Bebas Neue", sans-serif;
   position: relative;
   overflow: hidden;
@@ -193,11 +193,7 @@ body.login-body {
   text-decoration: none;
   transition: 0.3s;
 }
-.login-container form .forgot-link:hover {
-  color: rgb(255, 205.75, 58);
-}
 .login-container form .btn.primary {
-  background: linear-gradient(135deg, #1e3fff, rgb(0, 30.58, 208.5));
   border: none;
   border-radius: 8px;
   color: white;
@@ -223,7 +219,6 @@ body.login-body {
 }
 .login-container .back-btn:hover {
   transform: scale(1.2);
-  color: rgb(132, 150.04, 255);
 }
 
 body.signup-body {
@@ -280,7 +275,6 @@ body.signup-body {
   box-shadow: 0 0 0 2px rgba(30, 63, 255, 0.7);
 }
 .signup-container form .btn.primary {
-  background: linear-gradient(135deg, #1e3fff, rgb(0, 30.58, 208.5));
   border: none;
   border-radius: 8px;
   color: white;
@@ -307,11 +301,40 @@ body.signup-body {
 }
 .signup-container .back-btn:hover {
   transform: scale(1.2);
-  color: rgb(132, 150.04, 255);
 }
 
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 body.dashboard-body {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/dist/assets/images/background.jpeg") no-repeat top/cover;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/src/images/background.jpeg") no-repeat top/cover;
+  background-color: rgb(10, 15, 45);
+  color: #ffffff;
+  font-family: "Open Sans", sans-serif;
+  margin: 0;
+  height: 100vh;
+  /* Animations */
+}
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+body.dashboard-body body.dashboard-body {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/src/images/background.jpeg") no-repeat top/cover;
   background-color: rgb(10, 15, 45);
   color: #ffffff;
   font-family: "Open Sans", sans-serif;
@@ -320,9 +343,10 @@ body.dashboard-body {
   display: flex;
   flex-direction: column;
 }
-
-/* NAVBAR */
-.navbar {
+body.dashboard-body {
+  /* NAVBAR */
+}
+body.dashboard-body .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -336,17 +360,17 @@ body.dashboard-body {
   width: 90%;
   margin: 0 auto;
 }
-.navbar .logo {
+body.dashboard-body .navbar .logo {
   font-family: "DreamTeam", "Bebas Neue", sans-serif;
   font-size: 1.6rem;
   color: #ffffff;
   letter-spacing: 2px;
 }
-.navbar nav {
+body.dashboard-body .navbar nav {
   display: flex;
   gap: 2rem;
 }
-.navbar nav a {
+body.dashboard-body .navbar nav a {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   text-transform: uppercase;
@@ -355,12 +379,13 @@ body.dashboard-body {
   font-size: 1.2rem;
   transition: 0.3s ease;
 }
-.navbar nav a:hover {
+body.dashboard-body .navbar nav a:hover {
   color: #ffcb05;
 }
-
-/* MAIN CONTENT */
-.dashboard-main {
+body.dashboard-body {
+  /* MAIN CONTENT */
+}
+body.dashboard-body .dashboard-main {
   flex: 1;
   padding: 3rem;
   display: flex;
@@ -368,194 +393,522 @@ body.dashboard-body {
   gap: 3rem;
   margin-top: 50px;
 }
-
-/* WELCOME */
-.welcome-section {
-  text-align: left;
+body.dashboard-body {
+  /* WELCOME */
 }
-.welcome-section h1 {
+body.dashboard-body .welcome-section {
+  text-align: center;
+}
+body.dashboard-body .welcome-section h1 {
   font-family: "DreamTeam", "Bebas Neue", sans-serif;
-  font-size: 3.2rem;
+  font-size: 5.2rem;
 }
-.welcome-section h1 span {
+body.dashboard-body .welcome-section h1 span {
   color: #ffcb05;
 }
-.welcome-section .daily {
-  background: rgba(255, 255, 255, 0.1);
+body.dashboard-body .welcome-section .daily {
+  background: #ffcb05;
   display: inline-block;
   padding: 0.5rem 1.2rem;
   margin-top: 1rem;
   border-radius: 8px;
   font-weight: 600;
+  color: #000;
   font-size: 0.9rem;
 }
-
-/* LINEUP SECTION */
-.lineup-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+body.dashboard-body .welcome-section .daily p {
+  color: #000;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  font-family: dreamTeam, sans-serif;
 }
-.lineup-section .card {
-  background: rgba(10, 15, 45, 0.9);
-  border-radius: 1.2rem;
-  padding: 2rem;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  text-align: center;
+body.dashboard-body .welcome-section .daily .daily-progress {
+  width: 250px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 0.5rem;
 }
-.lineup-section .card h2 {
-  font-family: "DreamTeam", "Bebas Neue", sans-serif;
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+body.dashboard-body .welcome-section .daily .daily-progress #daily-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, #5b7fff, #3f4dd3);
+  transition: width 0.4s ease;
 }
-.lineup-section .card img {
-  width: 220px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(30, 63, 255, 0.4);
+body.dashboard-body .welcome-section .daily #daily-pct {
+  font-size: 0.9rem;
+  color: #ffcb05;
+  font-weight: 600;
 }
-
-/* CHALLENGE BOX */
-.challenge-box {
+body.dashboard-body {
+  /* CHALLENGE BOX */
+}
+body.dashboard-body .challenge-box {
   background: rgba(10, 15, 45, 0.9);
   border-radius: 1rem;
   padding: 2rem;
+  z-index: 1;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.4);
 }
-.challenge-box h3 {
+body.dashboard-body .challenge-box h3 {
   color: #ffcb05;
   font-family: "DreamTeam", "Bebas Neue", sans-serif;
   font-size: 1.6rem;
   margin-bottom: 0.4rem;
 }
-.challenge-box .deadline {
+body.dashboard-body .challenge-box .deadline {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1.2rem;
 }
-.challenge-box .stats-grid {
+body.dashboard-body .challenge-box .stats-grid {
   display: flex;
   gap: 1rem;
 }
-.challenge-box .stats-grid .stat {
+body.dashboard-body .challenge-box .stats-grid .stat {
   flex: 1;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 0.6rem;
   text-align: center;
   padding: 1rem 0;
 }
-.challenge-box .stats-grid .stat span {
+body.dashboard-body .challenge-box .stats-grid .stat span {
   font-weight: 700;
   color: #1e3fff;
   display: block;
   margin-bottom: 0.4rem;
 }
-.challenge-box .stats-grid .stat p {
+body.dashboard-body .challenge-box .stats-grid .stat p {
   font-weight: 500;
   font-size: 1.2rem;
 }
-
-.puzzle-section {
-  margin-top: 2rem;
-  color: #ffffff;
+body.dashboard-body #board {
+  height: 50vh;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+body.dashboard-body #board h1 {
+  font-size: 6rem;
+  color: #ffb300;
   text-align: center;
 }
-.puzzle-section h2 {
-  font-family: "DreamTeam", "Bebas Neue", sans-serif;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-.puzzle-section .subtitle {
-  color: rgba(255, 255, 255, 0.7);
-  margin-bottom: 1.5rem;
-}
-.puzzle-section .puzzle-objective {
-  background: rgba(255, 255, 255, 0.05);
-  border-left: 4px solid #ffcb05;
+body.dashboard-body .banner {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
   padding: 1rem;
-  border-radius: 8px;
-  width: 400px;
-  margin: 0 auto 2rem;
+  overflow: hidden;
+  position: absolute;
+  top: 10;
+  right: 0;
+  z-index: 0;
+  pointer-events: none;
 }
-.puzzle-section .puzzle-objective .highlight {
+body.dashboard-body .banner .slider {
+  width: 80vw;
+  height: 90vh;
+  margin: 0;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 1s;
+}
+body.dashboard-body .banner .slider .item {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(calc((var(--position) - 1) * 360deg / var(--quantity))) translateZ(1000px);
+}
+body.dashboard-body .banner .slider .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  border-radius: 25px;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.9);
+  margin-right: 150px;
+  margin-left: 150px;
+  transform: rotateY(180deg);
+}
+body.dashboard-body .banner .slider .item p {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-align: center;
+}
+body.dashboard-body .banner .slider .item .socialLinks {
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+body.dashboard-body .banner .slider .item .socialLinks a {
+  color: #ffc107;
+  font-size: 1.5rem;
+  transition: color 0.3s;
+}
+body.dashboard-body .banner .slider .item .socialLinks a:hover {
+  color: #ffb300;
+}
+body.dashboard-body .nav2 {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 193, 7, 0.8);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+  transition: background 0.3s;
+}
+body.dashboard-body .nav2:hover {
+  background: #ffb300;
+}
+body.dashboard-body .nav2.left2 {
+  left: 2%;
+}
+body.dashboard-body .nav2.right2 {
+  right: 2%;
+}
+body.dashboard-body {
+  /* ===========================
+     STAT-MATCH PUZZLE (refined)
+     =========================== */
+}
+body.dashboard-body .puzzle-section {
+  max-width: 950px;
+  margin: 3rem auto;
+  text-align: center;
+  color: #ffffff;
+}
+body.dashboard-body .puzzle-section h2 {
+  font-family: "DreamTeam", "Bebas Neue", sans-serif;
+  font-size: 2.6rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #fff;
+  text-shadow: 0 0 12px rgba(91, 127, 255, 0.6);
+}
+body.dashboard-body .puzzle-section .subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.8rem;
+}
+body.dashboard-body .puzzle-section .puzzle-objective {
+  background: rgba(255, 255, 255, 0.05);
+  border-left: 5px solid #ffcb05;
+  border-radius: 10px;
+  width: 420px;
+  margin: 0 auto 2.5rem;
+  padding: 1rem 1.4rem;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+body.dashboard-body .puzzle-section .puzzle-layout {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+body.dashboard-body {
+  /* LINEUP BOX */
+}
+body.dashboard-body .lineup-box {
+  background: rgba(0, 0, 0, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+}
+body.dashboard-body {
+  /* FOOTER */
+}
+body.dashboard-body .footer {
+  background: rgba(10, 15, 45, 0.95);
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+body.dashboard-body {
+  margin: 0 auto 2.5rem;
+  padding: 1rem 1.4rem;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.05);
+  text-align: left;
+}
+body.dashboard-body h3 {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #ffcb05;
+  margin-bottom: 0.3rem;
+}
+body.dashboard-body p {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+body.dashboard-body p .highlight {
   color: #ffcb05;
   font-weight: 700;
 }
-.puzzle-section .puzzle-layout {
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-}
-.puzzle-section .puzzle-layout .drop-zone {
-  width: 320px;
-  height: 220px;
-  border: 2px dashed rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+
+/* side-by-side layout */
+.puzzle-layout {
   display: flex;
   justify-content: center;
-  align-items: center;
-  background: rgba(10, 15, 45, 0.7);
-  color: rgba(255, 255, 255, 0.8);
-  transition: 0.3s;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 3rem;
+  /* drop zone card */
 }
-.puzzle-section .puzzle-layout .drop-zone:hover {
+.puzzle-layout .drop-zone {
+  width: 520px;
+  min-height: 280px;
+  border: 2px dashed #5c6aff;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 25px rgba(92, 106, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 2.5rem 2rem;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+.puzzle-layout .drop-zone:hover, .puzzle-layout .drop-zone.drag-over {
+  border-color: #ffcb05;
+  box-shadow: 0 0 25px rgba(255, 203, 5, 0.5);
+  background: rgba(255, 255, 255, 0.08);
+}
+.puzzle-layout .drop-zone p {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin: 0;
+  padding-top: 1rem;
+}
+.puzzle-layout .drop-zone #drop-zone p {
+  transition: opacity 0.3s ease;
+}
+.puzzle-layout .drop-zone {
+  /* Lineup player tags */
+}
+.puzzle-layout .drop-zone .lineup-player {
+  background: linear-gradient(135deg, #5b7fff, #3f4dd3);
+  border: 1px solid rgba(255, 203, 5, 0.3);
+  border-radius: 50px;
+  padding: 0.65rem 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  box-shadow: 0 2px 8px rgba(91, 127, 255, 0.3);
+  animation: slideIn 0.3s ease;
+  transition: all 0.2s ease;
+}
+.puzzle-layout .drop-zone .lineup-player:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(91, 127, 255, 0.5);
   border-color: #ffcb05;
 }
-.puzzle-section .puzzle-layout .players-list {
+.puzzle-layout .drop-zone .lineup-player .player-content {
+  display: inline;
+}
+.puzzle-layout .drop-zone .lineup-player .remove-player-btn {
+  background: rgba(255, 100, 100, 0.3);
+  border: 1px solid rgba(255, 100, 100, 0.6);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+  color: #ff6464;
+  font-weight: 700;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.3rem;
+}
+.puzzle-layout .drop-zone .lineup-player .remove-player-btn:hover {
+  background: rgba(255, 100, 100, 0.5);
+  border-color: #ff6464;
+  transform: scale(1.2);
+}
+.puzzle-layout .drop-zone .lineup-player .remove-player-btn:active {
+  transform: scale(0.9);
+}
+.puzzle-layout .drop-zone {
+  /* Clear button */
+}
+.puzzle-layout .drop-zone .clear-btn {
+  background: rgba(255, 0, 0, 0.2);
+  border: 2px solid rgba(255, 100, 100, 0.5);
+  border-radius: 50px;
+  padding: 0.55rem 1.3rem;
+  color: #ff6464;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 0.5rem;
+}
+.puzzle-layout .drop-zone .clear-btn:hover {
+  background: rgba(255, 100, 100, 0.3);
+  border-color: #ff6464;
+  transform: scale(1.05);
+}
+.puzzle-layout {
+  /* player list card */
+}
+.puzzle-layout .players-list {
   width: 300px;
+  background: rgba(10, 15, 45, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  padding: 1.5rem;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
   text-align: left;
 }
-.puzzle-section .puzzle-layout .players-list .players {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.puzzle-section .puzzle-layout .players-list .players .player {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
-  cursor: grab;
-  transition: 0.2s;
-}
-.puzzle-section .puzzle-layout .players-list .players .player:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-.puzzle-section .puzzle-layout .players-list .refresh {
-  margin-top: 1rem;
-  background: #ffcb05;
-  color: #0b1839;
-  border: none;
-  border-radius: 8px;
-  padding: 0.5rem 1rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-.puzzle-section .feedback {
-  margin-top: 2rem;
-  width: 500px;
-  margin-inline: auto;
-}
-.puzzle-section .feedback .feedback-item {
+.puzzle-layout .players-list h3 {
+  font-family: "DreamTeam", "Bebas Neue", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
   margin-bottom: 1rem;
 }
-.puzzle-section .feedback .feedback-item h4 {
-  margin-bottom: 0.3rem;
+.puzzle-layout .players-list .players {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
 }
-.puzzle-section .feedback .feedback-item .progress {
-  background: rgba(255, 255, 255, 0.1);
+.puzzle-layout .players-list .players .player {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 0.65rem 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+  cursor: grab;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  display: inline-block;
+}
+.puzzle-layout .players-list .players .player:hover {
+  background: rgba(91, 127, 255, 0.3);
+  border-color: rgba(255, 203, 5, 0.6);
+  transform: scale(1.08);
+  box-shadow: 0 0 15px rgba(91, 127, 255, 0.5);
+}
+.puzzle-layout .players-list .player.locked {
+  background: linear-gradient(90deg, rgba(50, 50, 50, 0.6), rgba(30, 30, 30, 0.6));
+  border: 1px dashed rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.5);
+  cursor: default;
+  position: relative;
+  filter: grayscale(0.3) contrast(0.9);
+}
+.puzzle-layout .players-list .player.locked .lock-overlay {
+  position: absolute;
+  bottom: -0.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #ffcb05;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.puzzle-layout .players-list .refresh {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto 0;
+  background: linear-gradient(135deg, #ffc107, #ffb300);
+  color: #000;
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 1.8rem;
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.puzzle-layout .players-list .refresh:hover {
+  background: linear-gradient(135deg, #ffe082, #ffc107);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+}
+.puzzle-layout .players-list .refresh:active {
+  transform: translateY(0);
+}
+
+/* progress feedback */
+.feedback {
+  margin-top: 3rem;
+  width: 500px;
+  margin-inline: auto;
+  text-align: left;
+}
+.feedback .feedback-item {
+  margin-bottom: 1rem;
+}
+.feedback .feedback-item h4 {
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #ffffff;
+}
+.feedback .feedback-item .progress {
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
-  height: 10px;
+  height: 12px;
   overflow: hidden;
+  margin-bottom: 0.4rem;
 }
-.puzzle-section .feedback .feedback-item .progress div {
-  background: #1e3fff;
+.feedback .feedback-item .progress div {
   height: 100%;
-  width: 0;
-  transition: width 0.3s;
+  width: 0%;
+  background: linear-gradient(to right, #5b7fff, #3f4dd3);
+  transition: width 0.4s ease;
 }
-.puzzle-section .feedback .feedback-item p {
+.feedback .feedback-item p {
   font-size: 0.85rem;
   color: rgba(255, 255, 255, 0.7);
 }
@@ -828,10 +1181,6 @@ body.chat-body {
   cursor: pointer;
   transition: 0.3s;
 }
-.chat-box .message-form button:hover {
-  background: rgb(255, 213.608, 56);
-}
-
 .footer {
   background: rgba(10, 15, 45, 0.95);
   padding: 1rem;

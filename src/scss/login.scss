@@ -1,13 +1,14 @@
 @use "variables" as *;
 @use "mixins" as *;
 
-body.login-body {
+.login-body {
   @include flex-center;
   height: 100vh;
   margin: 0;
   background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-    url("/dist/assets/images/background.jpeg") no-repeat center/cover;
+    url("/src/images/background.jpeg") no-repeat center/cover;
   color: $text-light;
+  background-color: #232232;
   font-family: $font-primary;
   position: relative;
   overflow: hidden;
@@ -69,12 +70,12 @@ body.login-body {
       transition: 0.3s;
 
       &:hover {
-        color: lighten(#ffc107, 10%);
+        //color: lighten(#ffc107, 10%);
       }
     }
 
     .btn.primary {
-      @include gradient-bg($primary-color, darken($primary-color, 15%));
+      //@include gradient-bg($primary-color, darken($primary-color, 15%));
       border: none;
       border-radius: 8px;
       color: white;
@@ -104,7 +105,7 @@ body.login-body {
 
     &:hover {
       transform: scale(1.2);
-      color: lighten($primary-color, 20%);
+      //color: lighten($primary-color, 20%);
     }
   }
 }

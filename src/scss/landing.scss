@@ -87,7 +87,7 @@ body.landing-body {
         text-transform: uppercase;
 
         &.primary {
-          @include gradient-bg($primary-color, darken($primary-color, 15%));
+          //@include gradient-bg($primary-color, darken($primary-color, 15%));
           color: white;
           border: none;
           box-shadow: 0 0 15px rgba($primary-color, 0.6);

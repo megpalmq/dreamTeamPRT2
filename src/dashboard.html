@@ -21,20 +21,104 @@
         <a href="/src/rewards.html">Rewards</a>
         <span>|</span>
         <a href="/src/players.html">Players</a>
+        <a
+          href="/src/account.html"
+          title="Account"
+          style="margin-left: 1rem; display: inline-flex; align-items: center"
+        >
+          <svg
+            width="28"
+            height="28"
+            viewBox="0 0 24 24"
+            fill="none"
+            style="vertical-align: middle"
+          >
+            <circle cx="12" cy="8" r="4" fill="#ffcb05" />
+            <path
+              d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"
+              stroke="#ffcb05"
+              stroke-width="2"
+              fill="none"
+            />
+          </svg>
+        </a>
       </nav>
     </header>
 
     <main class="dashboard-main">
       <section class="welcome-section">
         <h1>Welcome, <span id="username">Pacers Fan!</span></h1>
-        <div class="daily">
-          <p>
-            Daily Challenge :
-            <strong id="challenge-date">October 24, 2025</strong>
-          </p>
+        <a href="#puzzle">
+          <div class="daily">
+            <p>
+              Daily Challenge :
+              <strong id="challenge-date"></strong>
+            </p>
+          </div>
+        </a>
+      </section>
+
+      <section id="board">
+        <h1>Meet the Board</h1>
+        <div class="banner floating">
+          <button class="nav2 left2">&#10094;</button>
+          <div class="slider" style="--quantity: 12">
+            <div class="item" style="--position: 1">
+              <img src="/src/images/HaliCutout.jpg" alt="Tyrese Haliburton" />
+            </div>
+            <div class="item" style="--position: 2">
+              <img src="/src/images/NEMBY.png" alt="Andrew Nembhard" />
+            </div>
+            <div class="item" style="--position: 3">
+              <img src="/src/images/siakamCutout.png" alt="pascal siakam" />
+            </div>
+            <div class="item" style="--position: 4">
+              <img
+                src="/src/images/neismithCutout.png"
+                alt="Aaron Neismith"
+                style="--position: 4"
+              />
+            </div>
+            <div class="item" style="--position: 5">
+              <img src="/src/images/JacksonCutout.jpg" alt="Isaiah Jackson" />
+            </div>
+            <div class="item" style="--position: 6">
+              <img src="/src/images/obiCutout.png" alt="Obi Toppin" />
+            </div>
+            <div class="item" style="--position: 7">
+              <img src="/src/images/TJCutout.jpg" alt="TJ MCCONNELL" />
+            </div>
+            <div class="item" style="--position: 8">
+              <img
+                src="/src/images/mathurinCutout.png"
+                alt="Bennedict Mathurin"
+              />
+            </div>
+            <div class="item" style="--position: 9">
+              <img src="/src/images/HuffCutout.jpg" alt="Jay Huff" />
+            </div>
+            <div class="item" style="--position: 10">
+              <img src="/src/images/shepCutout.png" alt="Ben Sheppard" />
+            </div>
+            <div class="item" style="--position: 11">
+              <img src="/src/images/jaraceCutout.png" alt="Jarace Walker" />
+              <strong>Jordan Cornelius</strong>
+              <p>Outreach</p>
+              <div class="socialLinks">
+                <a
+                  href="https://www.linkedin.com/in/jordan-cornelius-132845363/"
+                  ><i class="fab fa-linkedin"></i
+                ></a>
+              </div>
+            </div>
+            <div class="item" style="--position: 12">
+              <img src="/src/images/fruphCutout.png" alt="Johnny Furphy" />
+            </div>
+          </div>
+          <button class="nav2 right2">&#10095;</button>
         </div>
       </section>
-      <section class="puzzle-section">
+      <section class="puzzle-section" id="puzzle">
         <h2>STAT-MATCH PUZZLE</h2>
         <p class="subtitle">
           Drag and drop players to meet statistical thresholds.
@@ -89,18 +173,6 @@
             </div>
             <p><span id="assists-val">0</span> / 50</p>
           </div>
-        </div>
-      </section>
-
-      <section class="lineup-section">
-        <div class="card player-select">
-          <h2>Select Your Players</h2>
-          <img src="/public/tyrese.png" alt="Tyrese Haliburton" />
-        </div>
-
-        <div class="card stats-chart">
-          <h2>Lineup Stats Comparison</h2>
-          <canvas id="statsChart"></canvas>
         </div>
       </section>
     </main>
